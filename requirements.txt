@@ -1,0 +1,6 @@
+streamlit
+pydantic
+faster-whisper
+tqdm
+python-dateutil
+pytest
