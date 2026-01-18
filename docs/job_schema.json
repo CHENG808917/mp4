@@ -1,0 +1,96 @@
+{
+  "title": "Subtitle Job Schema",
+  "type": "object",
+  "required": [
+    "job_id",
+    "account_id",
+    "product_id",
+    "video_filename",
+    "exact_search_text",
+    "shop_name",
+    "affiliate_link",
+    "status",
+    "created_at",
+    "updated_at",
+    "error_reason",
+    "outputs"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string",
+      "description": "Unique job identifier (e.g. 20260118_11657695003)"
+    },
+    "account_id": {
+      "type": "string",
+      "description": "Account ID, e.g. A/B/C"
+    },
+    "product_id": {
+      "type": "string",
+      "description": "Product identifier"
+    },
+    "video_filename": {
+      "type": "string",
+      "description": "MP4 filename inside 01_raw/{account_id}/",
+      "pattern": "^[^\\\\/]+$"
+    },
+    "exact_search_text": {
+      "type": "string",
+      "description": "Exact seller title text (including spaces and symbols)"
+    },
+    "shop_name": {
+      "type": "string",
+      "description": "Shop name"
+    },
+    "affiliate_link": {
+      "type": "string",
+      "description": "Affiliate link"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "subtitling",
+        "ready_to_upload",
+        "uploaded",
+        "failed"
+      ],
+      "description": "Job status"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO datetime"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO datetime"
+    },
+    "error_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Error message if failed"
+    },
+    "outputs": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Output paths after completion",
+      "properties": {
+        "mp4": {
+          "type": "string"
+        },
+        "srt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "mp4",
+        "srt"
+      ]
+    }
+  }
+}
